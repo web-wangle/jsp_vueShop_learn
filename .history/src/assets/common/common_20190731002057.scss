@@ -1,0 +1,13 @@
+/**
+ * @description: scss通用样式代码模块化封装文件
+ * @author: wangle
+ * @update: wangle(1019-07-31)
+ */
+
+/* 左右垂直居中方法 */
+@mixin howToCenter($type) {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}

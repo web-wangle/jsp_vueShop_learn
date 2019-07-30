@@ -2,13 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
 import 'normalize.css';
-import "@/assets/common/common.scss";
-
-import { Button, Row, Col} from 'vant'
-
-Vue.use(Button).use(Row).use(Col)
 
 Vue.config.productionTip = false
 

@@ -5,6 +5,7 @@
 </template>
 
 <style lang="scss">
+@import '@/assets/common/common.scss';
 #app{
   font-size: 0.14rem
 }

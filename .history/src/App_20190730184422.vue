@@ -1,11 +1,9 @@
 <template>
   <div id="app">
-    <router-view />
+    我们是测试代码
   </div>
 </template>
 
 <style lang="scss">
-#app{
-  font-size: 0.14rem
-}
+
 </style>

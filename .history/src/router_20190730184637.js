@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import ShoppingMall from '@/components/pages/ShoppingMall'
+import Home from './components/home.vue'
 
 Vue.use(Router)
 
@@ -11,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'ShoppingMall',
-      component: ShoppingMall
+      name: 'home',
+      component: Home
     }
   ]
 })

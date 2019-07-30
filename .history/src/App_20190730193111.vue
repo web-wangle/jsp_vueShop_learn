@@ -4,8 +4,7 @@
   </div>
 </template>
 
+<style src="../"></style>
+
 <style lang="scss">
-#app{
-  font-size: 0.14rem
-}
 </style>

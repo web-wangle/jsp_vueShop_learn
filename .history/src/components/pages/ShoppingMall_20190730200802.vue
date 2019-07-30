@@ -1,0 +1,17 @@
+<template>
+  <div id="ShoppingMall">
+    我是ShoppingMall页面
+  </div>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+    }
+  }
+}
+</script>
+
+<style lang='scss' scoped>
+</style>

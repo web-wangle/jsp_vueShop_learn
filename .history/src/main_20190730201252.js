@@ -4,7 +4,6 @@ import router from './router'
 import store from './store'
 
 import 'normalize.css';
-import "@/assets/common/common.scss";
 
 import { Button, Row, Col} from 'vant'
 
