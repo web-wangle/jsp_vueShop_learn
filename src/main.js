@@ -6,9 +6,9 @@ import store from './store'
 import 'normalize.css';
 import "@/assets/common/common.scss";
 
-import { Button, Row, Col} from 'vant'
+import { Button, Row, Col, Swipe, SwipeItem, Lazyload} from 'vant'
 
-Vue.use(Button).use(Row).use(Col)
+Vue.use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Lazyload)
 
 Vue.config.productionTip = false
 
