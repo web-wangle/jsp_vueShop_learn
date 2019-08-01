@@ -29,11 +29,20 @@
     <div class="adBanner">
       <img v-lazy="adBanner.PICTURE_ADDRESS" alt="" width="100%">
     </div>
+    <div class="recommendArea">
+      <div class="recommendTitle">
+        商品推荐
+      </div>
+      <div class="recommendBody">
+        <swiperDefault :swiperData="swiperData"></swiperDefault>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import swiperDefault from '@/components/swiper/swiperDefault'
 
 export default {
   data() {
@@ -41,8 +50,17 @@ export default {
       locationIcon: require("../../assets/images/location.png"),
       bannerPicArray: [],
       category:[],
-      adBanner: ''
+      adBanner: '',
+      swiperData: {
+        swiperOption: {
+          slidesPerView: 3,
+        },
+        recommendGoods: [],
+      }
     };
+  },
+  components: {
+    swiperDefault
   },
   created(){
     axios({
@@ -54,6 +72,7 @@ export default {
         this.category = res.data.data.category;
         this.adBanner = res.data.data.advertesPicture;
         this.bannerPicArray = res.data.data.slides;
+        this.swiperData.recommendGoods = res.data.data.recommend;
       }
     })
     .catch(err => {
@@ -119,5 +138,18 @@ export default {
     font-size: 12px;
     text-align: center;
   }
+}
+.recommendArea{
+  background-color: #fff;
+  margin-top: 0.3rem;
+}
+.recommendTitle{
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  padding: 0.2rem;
+  color: #e5017d;
+}
+.recommendBody{
+  border-bottom: 1px solid #eee;
 }
 </style>
