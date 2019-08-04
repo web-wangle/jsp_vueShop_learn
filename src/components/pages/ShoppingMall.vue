@@ -37,12 +37,14 @@
         <swiperDefault :swiperData="swiperData"></swiperDefault>
       </div>
     </div>
+    <floorComponent :floorData="floor1"></floorComponent>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import swiperDefault from '@/components/swiper/swiperDefault'
+import floorComponent from '@/components/component/floorComponent'
 
 export default {
   data() {
@@ -56,11 +58,13 @@ export default {
           slidesPerView: 3,
         },
         recommendGoods: [],
-      }
+      },
+      floor1: []
     };
   },
   components: {
-    swiperDefault
+    swiperDefault,
+    floorComponent
   },
   created(){
     axios({
@@ -73,6 +77,7 @@ export default {
         this.adBanner = res.data.data.advertesPicture;
         this.bannerPicArray = res.data.data.slides;
         this.swiperData.recommendGoods = res.data.data.recommend;
+        this.floor1 = this.floor1 = res.data.data.floor1;
       }
     })
     .catch(err => {
