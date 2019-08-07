@@ -1,5 +1,6 @@
 <template>
   <div class="floor">
+    <div class="floorTitle">{{floorTitle}}</div>
     <div class="floorAnomaly">
       <div class="floorOne"><img :src="floorData0.image" alt="" width="100%"></div>
       <div>
@@ -17,7 +18,7 @@
 
 <script>
 export default {
-  props: ['floorData'],
+  props: ['floorData','floorTitle'],
   data () {
     return {
       floorData0: [],
@@ -36,6 +37,12 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.floorTitle{
+  text-align: center;
+  height: 1.8rem;
+  line-height: 1.8rem;
+  border-bottom: 1px solid #ddd;
+}
 .floorAnomaly{
   display: flex;
   flex-direction: row;

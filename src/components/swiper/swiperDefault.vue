@@ -2,10 +2,10 @@
   <div>
     <swiper :options="swiperData.swiperOption">
           <swiper-slide class="swiperSlide" v-for="(item,index) in swiperData.recommendGoods" :key="index">
-            <div class="recommendItem" >
+            <div class="recommendItem">
               <img :src="item.image" alt="" width="80%">
               <div>{{item.goodsName}}</div>
-              <div>￥{{item.price}}(￥{{item.mallPrice}})</div>
+              <div>￥{{item.price | moneyFilter}}(￥{{item.mallPrice | moneyFilter}})</div>
             </div>
           </swiper-slide>
     </swiper>
@@ -15,6 +15,7 @@
 <script>
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import { toMoney } from '@/filter/moneyFilter.js'
 
 export default {
   props: ['swiperData'],
@@ -25,6 +26,11 @@ export default {
   },
   created(){
 
+  },
+  filters: {
+    moneyFilter(money){
+      return toMoney(money);
+    }
   },
   components: {
     swiper,
@@ -38,7 +44,7 @@ export default {
   width:99%;
   border-right: 1px solid #eee;
   height: 7.46rem;
-  font-size: 12px;
+  font-size: 0.6rem;
   text-align: center;
   }
 </style>

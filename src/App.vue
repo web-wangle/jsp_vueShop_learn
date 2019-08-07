@@ -6,6 +6,6 @@
 
 <style lang="scss">
 #app{
-  font-size: 0.14rem
+  font-size: 0.75rem
 }
 </style>
