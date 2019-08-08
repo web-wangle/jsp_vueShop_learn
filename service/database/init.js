@@ -4,10 +4,10 @@
  * @update: wangle(2019-08-07)
  */
 
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
+import glob from 'glob'
+import resolve from 'path'
 const db = "mongodb://localhost/smile-db"
-const glob = require('glob')
-const {resolve} = require('path')
 
 exports.initSchemas = () => {
   glob.sync(resolve(__dirname,'./schema/','**/*.js')).forEach(require)
