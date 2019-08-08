@@ -5,12 +5,15 @@
     <van-field v-model="username" label="用户名" right-icon="clear" placeholder="请输入用户名" required @click-right-icon="username=''" />
     <van-field v-model="password" label="密码" placeholder="请输入密码" required />
     <div class="registerButton">
-      <van-button type="primary" size="large">马上注册</van-button>
+      <van-button type="primary" size="large" @click="registerUser">马上注册</van-button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+import url from '@/serviceAPI.config.js'
+
 export default {
   data () {
     return {
@@ -21,6 +24,22 @@ export default {
   methods: {
     goBack(){
       this.$router.go(-1);
+    },
+    registerUser(){
+      axios({
+      url: url.registerUser,
+      method: 'post',
+      data: {
+          username: this.username,
+          password: this.password
+        }
+      })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
     }
   }
 }

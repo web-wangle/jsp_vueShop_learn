@@ -11,5 +11,5 @@ export const registerPage = async(ctx) => {
 
 // 调用注册接口
 export const register = async(ctx) => {
-  ctx.body = '用户注册接口'
+  ctx.body = ctx.request.body;
 }

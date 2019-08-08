@@ -9,9 +9,13 @@ import mongoose from 'mongoose'
 import {connect,initSchemas} from './database/init.js'
 import Router from 'koa-router'
 import routes from '../service/appApi'
+import bodyParser from 'koa-bodyparser'
+import cors from 'koa2-cors'
 
 const app = new Koa()
-const index = 'index';
+
+app.use(bodyParser)
+app.use(cors())
 
 // 自动设置路由
 const router = new Router();
@@ -21,12 +25,10 @@ for (let i in routes){
   }
 }
 
-// 打印路由列表
-if (process.env.NODE_ENV === 'development') {
-  for (const layer of router.stack) {
-    console.log(`path: ${layer.path}, methods: ${layer.methods}`);
-  }
-}
+// ;(async ()=>{
+//   await connect()
+//   initSchemas()
+// })()
 
 app.use(router.routes())
 app.use(router.allowedMethods())
