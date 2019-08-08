@@ -1,32 +1,36 @@
 /**
  * @description: koa服务器端相应配置操作
  * @author: wangle
- * @update: wangle(2019-08-07)
+ * @update: wangle(2019-08-08)
  */
 
 import Koa from 'koa'
 import mongoose from 'mongoose'
 import {connect,initSchemas} from './database/init.js'
+import Router from 'koa-router'
+import routes from '../service/appApi'
+
 const app = new Koa()
+const index = 'index';
 
-;(async() => {
-  await connect();
-  initSchemas();
-  const User = mongoose.model('User');
-  let oneUser = new User({userName: 'wangle',password: '12345'});
-  oneUser.save().then(() => {
-    console.log('插入数据成功');
-  })
+// 自动设置路由
+const router = new Router();
+for (let i in routes){
+  for(let j in routes[i]){
+    router.use(`/${i}`, routes[i][j].routes(), routes[i][j].allowedMethods())
+  }
+}
 
-  let users = await User.findOne({}).exec();
-  console.log('----------')
-  console.log(users)
-  console.log('----------')
-})()
+// 打印路由列表
+if (process.env.NODE_ENV === 'development') {
+  for (const layer of router.stack) {
+    console.log(`path: ${layer.path}, methods: ${layer.methods}`);
+  }
+}
 
-app.use(async(ctx) => {
-  ctx.body = 'hello koa'
-})
+app.use(router.routes())
+app.use(router.allowedMethods())
+
 
 app.listen(3000,() => {
   console.log(`server starting at port 3000`)

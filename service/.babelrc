@@ -1,0 +1,11 @@
+/**
+ * @description: babel配置文件
+ * @author: wangle
+ * @update: wangle(2019-08-08)
+ */
+
+{
+  "presets": [
+    "es2015"
+  ]
+}
