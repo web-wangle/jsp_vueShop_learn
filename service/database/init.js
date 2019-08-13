@@ -7,10 +7,10 @@
 import mongoose from 'mongoose'
 import glob from 'glob'
 import resolve from 'path'
-const db = "mongodb://localhost/smile-db"
+const db = "mongodb://127.0.0.1/smile-db"
 
-exports.initSchemas = () => {
-  glob.sync(resolve(__dirname,'./schema/','**/*.js')).forEach(require)
+exports.initSchemas = ()=>{
+  glob.sync(resolve(__dirname,'./schema','**/*.js')).forEach(require)
 }
 
 exports.connect = () => {

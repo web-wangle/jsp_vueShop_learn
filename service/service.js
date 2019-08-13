@@ -5,16 +5,16 @@
  */
 
 import Koa from 'koa'
-import mongoose from 'mongoose'
 import {connect,initSchemas} from './database/init.js'
+import mongoose from 'mongoose'
 import Router from 'koa-router'
-import routes from '../service/appApi'
+import routes from './controller'
 import bodyParser from 'koa-bodyparser'
 import cors from 'koa2-cors'
 
 const app = new Koa()
 
-app.use(bodyParser)
+app.use(bodyParser())
 app.use(cors())
 
 // 自动设置路由
@@ -25,10 +25,14 @@ for (let i in routes){
   }
 }
 
-// ;(async ()=>{
-//   await connect()
-//   initSchemas()
-// })()
+for (const layer of router.stack) {
+  console.log(`path: ${layer.path}, methods: ${layer.methods}`);
+}
+
+;(async ()=>{
+  await connect()
+  initSchemas()
+})()
 
 app.use(router.routes())
 app.use(router.allowedMethods())

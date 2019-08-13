@@ -35,10 +35,14 @@ export default {
         }
       })
       .then(res => {
-        console.log(res)
+        if(res.data.code === 200){
+          this.$toast.success('注册成功');
+        }else{
+          this.$toast.fail('注册失败');
+        }
       })
       .catch(err => {
-        console.log(err)
+        this.$toast.fail('注册失败');
       })
     }
   }
