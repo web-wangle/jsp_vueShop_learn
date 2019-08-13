@@ -30,8 +30,8 @@ export default {
       url: url.registerUser,
       method: 'post',
       data: {
-          username: this.username,
-          password: this.password
+          userName: this.username,
+          passWord: this.password
         }
       })
       .then(res => {

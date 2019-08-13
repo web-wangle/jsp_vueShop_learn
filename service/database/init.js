@@ -6,7 +6,7 @@
 
 import mongoose from 'mongoose'
 import glob from 'glob'
-import resolve from 'path'
+import {resolve} from 'path'
 const db = "mongodb://127.0.0.1/smile-db"
 
 exports.initSchemas = ()=>{

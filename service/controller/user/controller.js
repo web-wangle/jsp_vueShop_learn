@@ -4,7 +4,7 @@
  * @update: wangle(2019-08-08)
  */
 
-import mongoose, { Schema } from 'mongoose'
+import mongoose from 'mongoose'
 
 // 进入注册页 
 export const registerPage = async(ctx) => {
