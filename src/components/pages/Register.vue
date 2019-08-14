@@ -16,6 +16,7 @@ import url from '@/serviceAPI.config.js'
 import { truncate } from 'fs';
 
 export default {
+  // github怎么跪了
   data () {
     return {
       username: '',
