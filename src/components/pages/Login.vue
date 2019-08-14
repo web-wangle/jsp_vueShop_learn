@@ -1,11 +1,12 @@
 <template>
-  <div id="register">
-    <van-nav-bar title="用户注册" left-text="返回" left-arrow @click-left="goBack"/>
-    <div class="registerPanel"></div>
-    <van-field v-model="username" label="用户名" right-icon="clear" placeholder="请输入用户名" required @click-right-icon="username=''" />
-    <van-field v-model="password" type="password" label="密码" placeholder="请输入密码" required />
-    <div class="registerButton">
-      <van-button type="primary" size="large" @click="registerAction" :loading="openLoading">马上注册</van-button>
+  <div class="login">
+    <van-nav-bar title="用户登录" left-text="返回" left-arrow @click-left="goBack"></van-nav-bar>
+    <div class="registerPanel">
+      <van-field v-model="username" label="用户名" icon="clear" placeholder="请输入用户名" required @click-icon="username=''" :error-message="usernameErrorMsg"></van-field>
+      <van-field v-model="password" type="password" label="密码" placeholder="请输入密码" :error-message="passwordErrorMsg" required></van-field>
+      <div class="registerButton">
+        <van-button type="primary" @click="LoginAction" :loading="openLoading" size="large">登录</van-button>
+      </div>
     </div>
   </div>
 </template>
@@ -21,8 +22,8 @@ export default {
       username: '',
       password: '',
       openLoading: false,
-      usernameErrorMsg: '',
-      passwordErrorMsg: ''
+      usernameErrorMsg:'',
+      passwordErrorMsg:'',
     }
   },
   methods: {
@@ -30,9 +31,9 @@ export default {
       this.$router.go(-1);
     },
     registerAction() {
-      this.checkForm() && this.registerUser();
+      this.checkForm() && this.loginUser();
     },
-    registerUser() {
+    loginUser() {
       this.openLoading = true;
       axios({
       url: url.registerUser,
