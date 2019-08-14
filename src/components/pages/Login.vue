@@ -30,7 +30,7 @@ export default {
     goBack() {
       this.$router.go(-1);
     },
-    registerAction() {
+    LoginAction() {
       this.checkForm() && this.loginUser();
     },
     loginUser() {
