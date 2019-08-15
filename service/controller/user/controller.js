@@ -27,3 +27,36 @@ export const register = async(ctx) => {
     }
   })
 }
+
+//登录接口
+export const login = async(ctx) =>{
+  const User = mongoose.model('User')
+
+  let loginUser = ctx.request.body
+  let userName = loginUser.userName
+  let password = loginUser.password
+
+  //查找用户名是否存在，如果存在开始比对密码
+  await User.findOne({userName: userName}).exec().then(async(res) =>{
+    if(res){
+      //用户名存在，开始比对密码
+      let newUser = new User()
+      await newUser.comparePassword(password, res.password)
+      .then((res) => {
+        if(res){
+          ctx.body = { code: 200, message: '比对成功' }
+        }else{
+          ctx.body = { code: 200, message: '比对失败' }
+        }
+      })
+      .catch((err) => {
+        ctx.body = { code: 500, message: err }
+      })
+    }else{
+      ctx.body = {
+        code: 200,
+        messge: '用户名或密码错误'
+      }
+    }
+  })
+}

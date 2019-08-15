@@ -19,15 +19,17 @@ const userSchema = new Schema({
   lasstLoginAt: {type: Date, default: Date.now()},
 })
 
-// userSchema.pre('save', (next) => {
-//   bcrypt.genSalt(SALT_WORK_FACTOR, (err,salt) => {
-//     if(err) return next(err);
-//     bcrypt.hash(this.password,salt,(err,hash) => {
-//       if(err) return next(err);
-//       this.password = hash;
-//       next();
-//     })
-//   })
-// })
+userSchema.methods = {
+  //密码比对的方法
+  comparePassword:(_password,password) => {
+    return new Promise((res,rej) => {
+      if(_password === password){
+        res(true)
+      }else{
+        rej(false)
+      }
+    })
+  }
+}
 
 mongoose.model('User',userSchema);

@@ -36,7 +36,7 @@ export default {
     loginUser() {
       this.openLoading = true;
       axios({
-      url: url.registerUser,
+      url: url.login,
       method: 'post',
       data: {
           userName: this.username,
@@ -46,14 +46,18 @@ export default {
       .then(res => {
         this.openLoading = false;
         if(res.data.code === 200){
-          this.$toast.success('注册成功');
+          if(res.data.messge === '比对成功'){
+            this.$toast.success('登录成功');
+          }else{
+            this.$toast.fail('用户名或密码错误');
+          }
         }else{
-          this.$toast.fail('注册失败');
+          this.$toast.fail('网络错误，请稍后再试');
         }
       })
       .catch(err => {
         this.openLoading = false;
-        this.$toast.fail('注册失败');
+        this.$toast.fail('网络错误，请稍后再试');
       })
     },
     checkForm() {

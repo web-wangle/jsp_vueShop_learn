@@ -11,6 +11,7 @@ let router = new Router()
 router
   .get('/', controller.registerPage)
   .post('/register', controller.register)
+  .post('/login', controller.login)
 
   export default router;
   
