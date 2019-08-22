@@ -6,16 +6,14 @@
 
 import mongoose from 'mongoose'
 import fs from 'fs'
-import {filterGoods} from '../../fsJson'
+import newGoods from '../../fsJson'
 
 // 录入所有商品数据
 export const insertAllGoodsInfo = async(ctx) => {
-  filterGoods()
-  fs.readFileSync('./newGoods.json', 'utf8', (err, data) => {
-    if(err){
-      console.log(err)
-    }else{
-      data = JSON.parse(data)
+  await newGoods()
+  const goodsJson = fs.readFileSync('./newGoods.json','utf8')
+    if(goodsJson){
+      let data = JSON.parse(goodsJson)
       let saveCount = 0
       const Goods = mongoose.model('Goods')
       data.map((val, index) => {
@@ -29,7 +27,8 @@ export const insertAllGoodsInfo = async(ctx) => {
             console.log(`失败：${err}`)
           })
       })
+    }else{
+      console.log('导入数据错误...')
     }
-  })
   ctx.body = '开始导入数据...'
 }
