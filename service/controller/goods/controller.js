@@ -44,7 +44,7 @@ export const insertAllCategory = async(ctx) => {
       let data = JSON.parse(categoryJson)
       let saveCount = 0
       const Category = mongoose.model('Category')
-      data.map((val, index) => {
+      data.RECORDS.map((val, index) => {
         let newCategory = new Category(val)
         newCategory.save()
           .then(() => {
@@ -68,7 +68,7 @@ export const insertAllCategorySub = async(ctx) => {
       let data = JSON.parse(categorySubJson)
       let saveCount = 0
       const CategorySub = mongoose.model('CategorySub')
-      data.map((val, index) => {
+      data.RECORDS.map((val, index) => {
         let newCategorySub = new CategorySub(val)
         newCategorySub.save()
           .then(() => {
@@ -112,7 +112,6 @@ export const getCategoryList = async(ctx) => {
 export const getGoodsListByCategorySubID = async(ctx) =>{
   try{
     let categorySubId = ctx.request.query.categoryId
-    console.log(categorySubId)
     const Goods = mongoose.model('Goods')
     let result = await Goods.find({SUB_ID:categorySubId}).exec()
     ctx.body={code:200,message:result}
