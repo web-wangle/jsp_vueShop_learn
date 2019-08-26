@@ -84,3 +84,15 @@ export const insertAllCategorySub = async(ctx) => {
     }
   ctx.body = '开始导入数据...'
 }
+
+//商品数据查询接口
+export const getDetailGoodsInfo = async(ctx) => {
+  try{
+    let goodsId = ctx.request.body.goodsId
+    const Goods = mongoose.model('Goods')
+    let result = await Goods.findOne({ID: goodsId}).exec()
+    ctx.body = {code: 200, message: result}
+  }catch(err){
+    ctx.body = {code: 500, message: err}
+  }
+}

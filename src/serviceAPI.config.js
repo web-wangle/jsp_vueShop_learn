@@ -10,7 +10,8 @@ const URL = {
     getShoppingMallInfo: `${BASEURL}index`,
     getGoodsInfo: `${BASEURL}getGoodsInfo`,
     registerUser: `${LOCALURL}user/register`,
-    login: `${LOCALURL}user/login`
+    login: `${LOCALURL}user/login`,
+    getDetailGoodsInfo : `${LOCALURL}goods/getDetailGoodsInfo`
 }
 
 module.exports = URL

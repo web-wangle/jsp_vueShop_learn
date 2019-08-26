@@ -13,7 +13,7 @@
 <script>
 import axios from 'axios'
 import url from '@/serviceAPI.config.js'
-import { truncate } from 'fs';
+import { truncate } from 'fs'
 
 export default {
   data () {

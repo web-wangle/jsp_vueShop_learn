@@ -12,5 +12,6 @@ router
   .get('/insertAllGoodsInfo', controller.insertAllGoodsInfo)
   .get('/insertAllCategory', controller.insertAllCategory)
   .get('/insertAllCategorySub', controller.insertAllCategorySub)
+  .post('/getDetailGoodsInfo', controller.getDetailGoodsInfo)
 
   export default router;
