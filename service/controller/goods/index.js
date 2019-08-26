@@ -13,5 +13,7 @@ router
   .get('/insertAllCategory', controller.insertAllCategory)
   .get('/insertAllCategorySub', controller.insertAllCategorySub)
   .post('/getDetailGoodsInfo', controller.getDetailGoodsInfo)
+  .get('/getCategoryList', controller.getCategoryList)
+  .get('/getGoodsListByCategorySubID', controller.getGoodsListByCategorySubID)
 
   export default router;

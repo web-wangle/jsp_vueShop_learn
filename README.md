@@ -1,8 +1,9 @@
 # 技术胖vue视频学习问题整理
 <!-- TOC -->
 
-- [技术胖vue视频学习问题整理](#%e6%8a%80%e6%9c%af%e8%83%96vue%e8%a7%86%e9%a2%91%e5%ad%a6%e4%b9%a0%e9%97%ae%e9%a2%98%e6%95%b4%e7%90%86)
-  - [1.vue-cli配置文件并全局引入scss公共方法](#1vue-cli%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e5%b9%b6%e5%85%a8%e5%b1%80%e5%bc%95%e5%85%a5scss%e5%85%ac%e5%85%b1%e6%96%b9%e6%b3%95)
+- [技术胖vue视频学习问题整理](#技术胖vue视频学习问题整理)
+  - [1.vue-cli配置文件并全局引入scss公共方法](#1vue-cli配置文件并全局引入scss公共方法)
+  - [2.第43课中的一个错误问题](#2第43课中的一个错误问题)
 
 <!-- /TOC -->
 ## 1.vue-cli配置文件并全局引入scss公共方法 
@@ -42,3 +43,7 @@ module.expores = {
 //main.js中引入全局scss
 import "@/assets/common/common.scss";
 ```
+## 2.第43课中的一个错误问题
+<p align="right">2019-08-26</p>
+
+&emsp;&emsp;由于自己看的是免费的文字教程，所以是以博客文字内容为主。学习到第43课时发现一直获取不到返回结果。经过`console.log`打印过后，发现`categoryId`获取的值为**undefined**，`/getCategorySubList`路由在文字教程中使用的是`router.get`方法，但是在获取入参时使用的却是`ctx.request.body`方法。这里我们需要了解的是，`get`方法应该使用`ctx.request.query`方法获取参数。在查阅过博主的源代码后，发现博主最终该处使用的是`post`请求而非`get`请求，所以各位小伙伴们在学习的时候需要注意，不能照搬照抄。
