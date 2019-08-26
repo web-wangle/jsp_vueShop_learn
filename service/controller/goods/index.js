@@ -10,5 +10,7 @@ let router = new Router()
 
 router
   .get('/insertAllGoodsInfo', controller.insertAllGoodsInfo)
+  .get('/insertAllCategory', controller.insertAllCategory)
+  .get('/insertAllCategorySub', controller.insertAllCategorySub)
 
   export default router;
