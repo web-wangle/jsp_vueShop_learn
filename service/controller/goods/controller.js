@@ -63,7 +63,7 @@ export const insertAllCategory = async(ctx) => {
 
 // 录入商品子类数据
 export const insertAllCategorySub = async(ctx) => {
-  const categorySubJson = fs.readFileSync(`${dataJson_path}/category.json`,'utf8')
+  const categorySubJson = fs.readFileSync(`${dataJson_path}/category_sub.json`,'utf8')
     if(categorySubJson){
       let data = JSON.parse(categorySubJson)
       let saveCount = 0
@@ -97,7 +97,7 @@ export const getDetailGoodsInfo = async(ctx) => {
   }
 }
 
-//商品数据类别查询接口
+//商品大类别查询接口
 export const getCategoryList = async(ctx) => {
   try{
     const Category = mongoose.model('Category')
@@ -108,12 +108,12 @@ export const getCategoryList = async(ctx) => {
   }
 }
 
-//根据商品类别获取列表接口
-export const getGoodsListByCategorySubID = async(ctx) =>{
+//商品小类别查询接口
+export const getCategorySubList = async(ctx) =>{
   try{
-    let categorySubId = ctx.request.query.categoryId
-    const Goods = mongoose.model('Goods')
-    let result = await Goods.find({SUB_ID:categorySubId}).exec()
+    let cateoryId = ctx.request.body.categoryId
+    const CategorySub = mongoose.model('CategorySub')
+    let result = await CategorySub.find({MALL_CATEGORY_ID: cateoryId}).exec()
     ctx.body={code:200,message:result}
   }catch(err){
     ctx.body={code:500,message:err}

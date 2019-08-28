@@ -8,13 +8,19 @@
         <van-col span="6">
           <div id="leftNav">
             <ul>
-              <li v-for="(item, index) in category" :key="index" @click="clickCategory(index)" :class="{categoryActive:categoryIndex==index}">
+              <li v-for="(item, index) in category" :key="index" @click="clickCategory(index, item.ID)" :class="{categoryActive:categoryIndex==index}">
                 {{item.MALL_CATEGORY_NAME}}
               </li>
             </ul>
           </div>
         </van-col>
-        <van-col span="18">右侧列表</van-col>
+        <van-col span="18">
+          <!-- <div class="tabCategorySub"> -->
+            <van-tabs v-model="active">
+              <van-tab v-for="(item, index) in categorySub" :key="index" :title="item.MALL_SUB_NAME"></van-tab>
+            </van-tabs>
+          <!-- </div> -->
+        </van-col>
       </van-row>
     </div>
   </div>
@@ -27,8 +33,10 @@ import url from '@/serviceAPI.config.js'
 export default {
   data () {
     return {
+      active: 0,
       category: [],
-      categoryIndex: 0
+      categoryIndex: 0,
+      categorySub: []
     }
   },
   created(){
@@ -47,6 +55,7 @@ export default {
       .then(res => {
         if(res.data.code == 200 && res.data.message){
           this.category = res.data.message
+          this.getCategorySubByCategoryId(this.category[0].ID)
         }else{
           this.$toast('服务器错误，获取数据失败')
         }
@@ -55,14 +64,37 @@ export default {
         this.$toast('服务器错误，获取数据失败')
       })
     },
-    clickCategory(index){
+    getCategorySubByCategoryId(categoryId){
+      axios({
+        url: url.getCategorySubList,
+        method: 'post',
+        data: {
+          categoryId: categoryId
+        }
+      })
+      .then(res => {
+        if(res.data.code == 200 && res.data.message){
+          this.categorySub=res.data.message
+        }else{
+          this.$toast('服务器错误，获取数据失败')
+        }
+      })
+      .catch(err => {
+        this.$toast('服务器错误，获取数据失败')
+      })
+    },
+    clickCategory(index, categoryId){
       this.categoryIndex = index
+      this.getCategorySubByCategoryId(categoryId)
     }
   }
 }
 </script>
 
 <style lang='scss' scoped>
+#leftNav{
+  background-color: aliceblue;
+}
 #leftNav ul li{
   line-height: 2rem;
   border-bottom: 1px solid #E4E7ED;
@@ -71,6 +103,6 @@ export default {
   text-align: center;
 }
 .categoryActive{
-  background-color: red;
+  background-color: #fff;
 }
 </style>
