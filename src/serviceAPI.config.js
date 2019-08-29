@@ -13,7 +13,8 @@ const URL = {
     login: `${LOCALURL}user/login`,
     getDetailGoodsInfo: `${LOCALURL}goods/getDetailGoodsInfo`,
     getCategoryList: `${LOCALURL}goods/getCategoryList`,
-    getCategorySubList:  `${LOCALURL}goods/getCategorySubList`
+    getCategorySubList:  `${LOCALURL}goods/getCategorySubList`,
+    getGoodsListByCategorySubID: `${LOCALURL}goods/getGoodsListByCategorySubID`
 }
 
 module.exports = URL

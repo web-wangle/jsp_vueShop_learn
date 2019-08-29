@@ -119,3 +119,18 @@ export const getCategorySubList = async(ctx) =>{
     ctx.body={code:500,message:err}
   }
 }
+
+//根据类别获取商品列表
+export const getGoodsListByCategorySubID = async(ctx) => {
+  try{
+    let categorySubId = ctx.request.body.categorySubId
+    let page = ctx.request.body.page
+    let num = 10
+    let start = (page-1)*num
+    const Goods = mongoose.model('Goods')
+    let result = await Goods.find({SUB_ID:categorySubId}).skip(start).limit(num).exec()
+    ctx.body={code:200,message:result}
+  }catch(err){
+
+  }
+}

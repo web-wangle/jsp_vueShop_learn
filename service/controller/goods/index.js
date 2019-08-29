@@ -15,5 +15,6 @@ router
   .post('/getDetailGoodsInfo', controller.getDetailGoodsInfo)
   .get('/getCategoryList', controller.getCategoryList)
   .post('/getCategorySubList', controller.getCategorySubList)
+  .post('/getGoodsListByCategorySubID', controller.getGoodsListByCategorySubID)
 
   export default router;
