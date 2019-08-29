@@ -200,6 +200,7 @@ export default {
   .hotGoods{
     overflow: hidden;
     background-color: #fff;
+    height: 130rem;
   }
 }
 </style>

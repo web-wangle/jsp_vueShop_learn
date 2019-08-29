@@ -64,8 +64,8 @@ export default {
   },
   mounted(){
     let winHeight = document.documentElement.clientHeight
-    document.getElementById('leftNav').style.height = `${winHeight-46}px`
-    document.getElementById('listDiv').style.height = `${winHeight-90}px`
+    document.getElementById('leftNav').style.height = `${winHeight-46-50}px`
+    document.getElementById('listDiv').style.height = `${winHeight-90-50}px`
   },
   methods: {
     onRefresh(){
@@ -91,7 +91,6 @@ export default {
       .then(res => {
         if(res.data.code == 200 && res.data.message){
           this.category = res.data.message
-          console.log(11111111)
           this.getCategorySubByCategoryId(this.category[0].ID)
         }else{
           this.$toast('服务器错误，获取数据失败')
@@ -147,7 +146,6 @@ export default {
       this.page = 1
       this.finished = false
       this.goodList = []
-      console.log(2222222)
       this.getCategorySubByCategoryId(categoryId)
     },
     onClickCategorySub(index, title){

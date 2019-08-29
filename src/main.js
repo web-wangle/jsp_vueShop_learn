@@ -6,9 +6,9 @@ import store from './store'
 import 'normalize.css';
 import "@/assets/common/common.scss";
 
-import { Button, Row, Col, Swipe, SwipeItem, Lazyload, List, Toast, Field, NavBar, Icon, Tab, Tabs, PullRefresh } from 'vant'
+import { Button, Row, Col, Swipe, SwipeItem, Lazyload, List, Toast, Field, NavBar, Icon, Tab, Tabs, PullRefresh, Stepper, Tabbar, TabbarItem } from 'vant'
 
-Vue.use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Lazyload).use(List).use(Toast).use(Field).use(NavBar).use(Icon).use(Tab).use(Tabs).use(PullRefresh)
+Vue.use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Lazyload).use(List).use(Toast).use(Field).use(NavBar).use(Icon).use(Tab).use(Tabs).use(PullRefresh).use(Stepper).use(Tabbar).use(TabbarItem)
 Vue.config.productionTip = false
 
 new Vue({
